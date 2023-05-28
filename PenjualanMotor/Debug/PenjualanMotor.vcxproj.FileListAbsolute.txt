@@ -1,0 +1,3 @@
+C:\Users\Nicolaus\source\repos\PenjualanMotor\PenjualanMotor\Debug\PenjualanMotor.vcxproj.AssemblyReference.cache
+C:\Users\Nicolaus\source\repos\PenjualanMotor\PenjualanMotor\Debug\PenjualanMotor.MyForm.resources
+C:\Users\Nicolaus\source\repos\PenjualanMotor\PenjualanMotor\Debug\PenjualanMotor.vcxproj.GenerateResource.cache
