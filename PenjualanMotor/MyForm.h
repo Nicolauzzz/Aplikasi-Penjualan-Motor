@@ -68,6 +68,10 @@ namespace PenjualanMotor {
 	private: System::Windows::Forms::Button^ button4;
 	private: System::Windows::Forms::RichTextBox^ richTextBox1;
 	private: System::Windows::Forms::Label^ label11;
+	private: System::Windows::Forms::Button^ button2;
+
+
+
 
 	private: int maticPrice = 0;
 #pragma region Windows Form Designer generated code
@@ -102,6 +106,7 @@ namespace PenjualanMotor {
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->richTextBox1 = (gcnew System::Windows::Forms::RichTextBox());
 			this->label11 = (gcnew System::Windows::Forms::Label());
+			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->panel1->SuspendLayout();
 			this->panel2->SuspendLayout();
 			this->SuspendLayout();
@@ -338,6 +343,7 @@ namespace PenjualanMotor {
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(161, 20);
 			this->textBox1->TabIndex = 9;
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox1_TextChanged);
 			// 
 			// comboBox2
 			// 
@@ -371,7 +377,7 @@ namespace PenjualanMotor {
 			this->button3->FlatAppearance->BorderColor = System::Drawing::Color::Teal;
 			this->button3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button3->ForeColor = System::Drawing::Color::Teal;
-			this->button3->Location = System::Drawing::Point(301, 564);
+			this->button3->Location = System::Drawing::Point(645, 551);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(164, 46);
 			this->button3->TabIndex = 13;
@@ -402,7 +408,7 @@ namespace PenjualanMotor {
 			this->richTextBox1->Font = (gcnew System::Drawing::Font(L"Adobe Devanagari", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->richTextBox1->ForeColor = System::Drawing::Color::White;
-			this->richTextBox1->Location = System::Drawing::Point(585, 149);
+			this->richTextBox1->Location = System::Drawing::Point(582, 148);
 			this->richTextBox1->Name = L"richTextBox1";
 			this->richTextBox1->Size = System::Drawing::Size(298, 344);
 			this->richTextBox1->TabIndex = 15;
@@ -415,18 +421,35 @@ namespace PenjualanMotor {
 			this->label11->Font = (gcnew System::Drawing::Font(L"Adobe Devanagari", 20.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label11->ForeColor = System::Drawing::Color::White;
-			this->label11->Location = System::Drawing::Point(675, 511);
+			this->label11->Location = System::Drawing::Point(667, 511);
 			this->label11->Name = L"label11";
 			this->label11->Size = System::Drawing::Size(114, 37);
 			this->label11->TabIndex = 16;
 			this->label11->Text = L"RECEIPT";
+			// 
+			// button2
+			// 
+			this->button2->BackColor = System::Drawing::Color::Teal;
+			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->button2->Font = (gcnew System::Drawing::Font(L"Adobe Devanagari", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button2->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->button2->Location = System::Drawing::Point(316, 564);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(157, 46);
+			this->button2->TabIndex = 17;
+			this->button2->Text = L"RESET";
+			this->button2->UseVisualStyleBackColor = false;
+			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
 			// 
 			// MyForm
 			// 
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->ClientSize = System::Drawing::Size(922, 628);
+			this->ClientSize = System::Drawing::Size(943, 628);
+			this->Controls->Add(this->button2);
 			this->Controls->Add(this->label11);
 			this->Controls->Add(this->richTextBox1);
 			this->Controls->Add(this->button4);
@@ -469,26 +492,28 @@ namespace PenjualanMotor {
 	private: System::Void label9_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-		String^ selectedMerk = comboBox1->SelectedItem->ToString();
+		if (comboBox1->SelectedItem != nullptr) {
+			String^ selectedMerk = comboBox1->SelectedItem->ToString();
 
-		if (selectedMerk == "Yamaha") {
-			sportPrice = 28000000;
-			maticPrice = 16000000;
-		}
-		else if (selectedMerk == "Honda") {
-			sportPrice = 30000000;
-			maticPrice = 15000000;
-		}
-		else if (selectedMerk == "Suzuki") {
-			sportPrice = 29000000;
-			maticPrice = 14000000;
-		}
+			if (selectedMerk == "Yamaha") {
+				sportPrice = 28000000;
+				maticPrice = 16000000;
+			}
+			else if (selectedMerk == "Honda") {
+				sportPrice = 30000000;
+				maticPrice = 15000000;
+			}
+			else if (selectedMerk == "Suzuki") {
+				sportPrice = 29000000;
+				maticPrice = 14000000;
+			}
 
-		if (radioButton1->Checked) {
-			textBox2->Text = sportPrice.ToString();
-		}
-		else if (radioButton2->Checked) {
-			textBox2->Text = maticPrice.ToString();
+			if (radioButton1->Checked) {
+				textBox2->Text = sportPrice.ToString();
+			}
+			else if (radioButton2->Checked) {
+				textBox2->Text = maticPrice.ToString();
+			}
 		}
 	}
 	private: System::Void radioButton2_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
@@ -497,84 +522,111 @@ namespace PenjualanMotor {
 		}
 	}
 	private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+		textBox2->Enabled = false;
 	}
 	private: System::Void comboBox2_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-		String^ selectedMerk = comboBox1->SelectedItem->ToString();
-		String^ selectedPayment = comboBox2->SelectedItem->ToString();
-		int diskon = 0;
+		if (comboBox2->SelectedItem != nullptr)
+			if(comboBox1->SelectedItem != nullptr) {
+			String^ selectedMerk = comboBox1->SelectedItem->ToString();
+			String^ selectedPayment = comboBox2->SelectedItem->ToString();
+			int diskon = 0;
 
-		if (selectedMerk == "Yamaha") {
-			if (selectedPayment == "Tunai") {
-				diskon = 20;
+			if (selectedMerk == "Yamaha") {
+				if (selectedPayment == "Tunai") {
+					diskon = 20;
+				}
+				else if (selectedPayment == "Kredit") {
+					diskon = 8;
+				}
 			}
-			else if (selectedPayment == "Kredit") {
-				diskon = 8;
+			else if (selectedMerk == "Honda") {
+				if (selectedPayment == "Tunai") {
+					diskon = 20;
+				}
+				else if (selectedPayment == "Kredit") {
+					diskon = 9;
+				}
 			}
+			else if (selectedMerk == "Suzuki") {
+				if (selectedPayment == "Tunai") {
+					diskon = 20;
+				}
+				else if (selectedPayment == "Kredit") {
+					diskon = 7;
+				}
+			}
+
+			textBox3->Text = diskon.ToString();
 		}
-		else if (selectedMerk == "Honda") {
-			if (selectedPayment == "Tunai") {
-				diskon = 20;
-			}
-			else if (selectedPayment == "Kredit") {
-				diskon = 9;
-			}
+	}
+	private: System::Void textBox3_TextChanged(System::Object ^ sender, System::EventArgs ^ e) {
+		textBox3->Enabled = false;
+	}
+	private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^ e) {
+		int harga = Int32::Parse(textBox2->Text);
+		int diskon = Int32::Parse(textBox3->Text);
+		int totalDiskon = (diskon * harga) / 100;
+		int total = harga - totalDiskon;
+
+		textBox3->Text = totalDiskon.ToString();
+		textBox4->Text = total.ToString();
+	}
+	private: System::Void textBox4_TextChanged(System::Object ^ sender, System::EventArgs ^ e) {
+		textBox4->Enabled = false;
+	}
+
+	private: System::Void button3_Click(System::Object ^ sender, System::EventArgs ^ e) {
+		if (MessageBox::Show("Do you want to exit?", "Exit Prompt", MessageBoxButtons::YesNo, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::Yes)
+			Application::Exit();
+	}
+	private: System::Void button4_Click(System::Object ^ sender, System::EventArgs ^ e) {
+		if (textBox1->Text == "" || comboBox1->SelectedItem == nullptr || (radioButton1->Checked == false && radioButton2->Checked == false) || comboBox2->SelectedItem == nullptr) {
+			MessageBox::Show("Please fill in all the required fields.", "Incomplete Information", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			return;
 		}
-		else if (selectedMerk == "Suzuki") {
-			if (selectedPayment == "Tunai") {
-				diskon = 20;
-			}
-			else if (selectedPayment == "Kredit") {
-				diskon = 7;
-			}
+		String^ receipt = "=====APLIKASI PENJUALAN MOTOR=====\n";
+		receipt += "======NICOLAUS EVAN WIDYATNA======\n";
+		receipt += "===========(21120122140140)============\n";
+
+		receipt += "\nStruk Pembelian Anda.\n";
+
+		receipt += "Tanggal: " + DateTime::Now.ToString() + "\n";
+		receipt += "Nama Pembeli: " + textBox1->Text + "\n";
+		receipt += "Merk: " + comboBox1->SelectedItem->ToString() + "\n";
+
+		if (radioButton1->Checked) {
+			receipt += "Tipe: Sport\n";
 		}
+		else if (radioButton2->Checked) {
+			receipt += "Tipe: Matic\n";
+		}
+		receipt += "Harga Awal: Rp. " + textBox2->Text + "\n";
 
-		textBox3->Text = diskon.ToString();
+		receipt += "Metode Pembayaran: " + comboBox2->SelectedItem->ToString() + "\n";
+		receipt += "Total Diskon: Rp. " + textBox3->Text + "\n";
+		receipt += "Total Pembayaran: Rp. " + textBox4->Text + "\n";
+
+		receipt += "\nTERIMAKASIH";
+
+		richTextBox1->Text = receipt;
 	}
-private: System::Void textBox3_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	int harga = Int32::Parse(textBox2->Text);
-	int diskon = Int32::Parse(textBox3->Text);
-	int totalDiskon = (diskon * harga) / 100;
-	int total = harga - totalDiskon;
-
-	textBox3->Text = totalDiskon.ToString();
-	textBox4->Text = total.ToString();
-}
-private: System::Void textBox4_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-
-private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-	Application::Exit();
-}
-private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
-	String^ receipt = "=====APLIKASI PENJUALAN MOTOR=====\n";
-	receipt += "======NICOLAUS EVAN WIDYATNA======\n";
-	receipt += "===========(21120122140140)============\n";
-
-	receipt += "\nStruk Pembelian Anda.\n";
-
-	receipt += "Tanggal: " + DateTime::Now.ToString() + "\n";
-	receipt += "Nama Pembeli: " + textBox1->Text + "\n";
-	receipt += "Merk: " + comboBox1->SelectedItem->ToString() + "\n";
-
-	if (radioButton1->Checked) {
-		receipt += "Tipe: Sport\n";
-	}
-	else if (radioButton2->Checked) {
-		receipt += "Tipe: Matic\n";
-	}
-	receipt += "Harga Awal: Rp. " + textBox2->Text + "\n";
-
-	receipt += "Metode Pembayaran: " + comboBox2->SelectedItem->ToString() + "\n";
-	receipt += "Total Diskon: Rp. " + textBox3->Text + "\n";
-	receipt += "Total Pembayaran: Rp. " + textBox4->Text + "\n";
-
-	receipt += "\nTERIMAKASIH";
-
-	richTextBox1->Text = receipt;
-}
 private: System::Void richTextBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	// Mengatur kembali nilai-nilai default untuk merk, tipe, dan harga
+	comboBox1->SelectedIndex = -1;
+	radioButton1->Checked = false;
+	radioButton2->Checked = false;
+	textBox2->Text = "";
+	textBox1->Text = "";
+	textBox3->Text = "";
+	textBox4->Text = "";
+	richTextBox1->Text = "";
+}
+private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+
+private: System::Void textBox5_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
