@@ -613,7 +613,6 @@ namespace PenjualanMotor {
 private: System::Void richTextBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-	// Mengatur kembali nilai-nilai default untuk merk, tipe, dan harga
 	comboBox1->SelectedIndex = -1;
 	radioButton1->Checked = false;
 	radioButton2->Checked = false;
