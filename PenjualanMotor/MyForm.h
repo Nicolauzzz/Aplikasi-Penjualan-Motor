@@ -75,6 +75,13 @@ namespace PenjualanMotor {
 	private: System::Windows::Forms::Button^ button4;
 	private: System::Windows::Forms::RichTextBox^ richTextBox1;
 	private: System::Windows::Forms::Label^ label11;
+
+	private: System::Windows::Forms::TextBox^ textBox5;
+	private: System::Windows::Forms::Label^ label13;
+	private: System::Windows::Forms::Label^ label12;
+
+
+
 	private: System::Windows::Forms::Button^ button2;
 
 	
@@ -113,6 +120,9 @@ namespace PenjualanMotor {
 			this->richTextBox1 = (gcnew System::Windows::Forms::RichTextBox());
 			this->label11 = (gcnew System::Windows::Forms::Label());
 			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
+			this->label13 = (gcnew System::Windows::Forms::Label());
+			this->label12 = (gcnew System::Windows::Forms::Label());
 			this->panel1->SuspendLayout();
 			this->panel2->SuspendLayout();
 			this->SuspendLayout();
@@ -452,12 +462,49 @@ namespace PenjualanMotor {
 			this->button2->UseVisualStyleBackColor = false;
 			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
 			// 
+			// textBox5
+			// 
+			this->textBox5->Enabled = false;
+			this->textBox5->Location = System::Drawing::Point(752, 132);
+			this->textBox5->Name = L"textBox5";
+			this->textBox5->Size = System::Drawing::Size(124, 20);
+			this->textBox5->TabIndex = 19;
+			this->textBox5->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox5_TextChanged);
+			// 
+			// label13
+			// 
+			this->label13->AutoSize = true;
+			this->label13->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label13->ForeColor = System::Drawing::Color::White;
+			this->label13->Location = System::Drawing::Point(670, 130);
+			this->label13->Name = L"label13";
+			this->label13->Size = System::Drawing::Size(76, 20);
+			this->label13->TabIndex = 20;
+			this->label13->Text = L"Sisa Saldo";
+			this->label13->Click += gcnew System::EventHandler(this, &MyForm::label13_Click);
+			// 
+			// label12
+			// 
+			this->label12->AutoSize = true;
+			this->label12->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label12->ForeColor = System::Drawing::Color::White;
+			this->label12->Location = System::Drawing::Point(603, 92);
+			this->label12->Name = L"label12";
+			this->label12->Size = System::Drawing::Size(196, 22);
+			this->label12->TabIndex = 21;
+			this->label12->Text = L"Saldo Rp.50.000.000";
+			// 
 			// MyForm
 			// 
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->ClientSize = System::Drawing::Size(960, 685);
+			this->Controls->Add(this->label12);
+			this->Controls->Add(this->label13);
+			this->Controls->Add(this->textBox5);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->label11);
 			this->Controls->Add(this->richTextBox1);
@@ -596,16 +643,20 @@ public:
 		textBox3->Enabled = false;
 	}
 
-	private:
-		void HitungTotal() {
-			int harga = Int32::Parse(textBox2->Text);
-			int diskon = Int32::Parse(textBox3->Text);
-			int totalDiskon = (diskon * harga) / 100;
-			int total = harga - totalDiskon;
+private:
+	int saldo = 50000000; // Saldo awal diubah menjadi variabel global
 
-			textBox3->Text = totalDiskon.ToString();
-			textBox4->Text = total.ToString();
-		}
+	void HitungTotal() {
+		int harga = Int32::Parse(textBox2->Text);
+		int diskon = Int32::Parse(textBox3->Text);
+		int totalDiskon = (diskon * harga) / 100;
+		int total = harga - totalDiskon;
+		int kembalian = saldo - total;
+
+		textBox3->Text = totalDiskon.ToString();
+		textBox4->Text = total.ToString();
+		textBox5->Text = saldo.ToString(); // Menampilkan saldo pada TextBox5
+	}
 	private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^ e) {
 		HitungTotal();
 	}
@@ -614,12 +665,12 @@ public:
 	}
 
 	private: System::Void button3_Click(System::Object ^ sender, System::EventArgs ^ e) {
-		if (MessageBox::Show("Do you want to exit?", "Exit Prompt", MessageBoxButtons::YesNo, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::Yes)
+		if (MessageBox::Show("Yakin Mau Keluar Dari Aplikasi Nich?", "Exit Prompt", MessageBoxButtons::YesNo, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::Yes)
 			Application::Exit();
 	}
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (textBox1->Text == "" || comboBox1->SelectedItem == nullptr || (radioButton1->Checked == false && radioButton2->Checked == false) || comboBox2->SelectedItem == nullptr) {
-			MessageBox::Show("Please fill in all the required fields.", "Incomplete Information", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			MessageBox::Show("Isi Kolomnya Dong, Biar Programnya Jalan.", "Incomplete Information", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 			return;
 		}
 
@@ -660,15 +711,22 @@ public:
 		else if (radioButton2->Checked) {
 			receipt += "Tipe: Matic\n";
 		}
+		//receipt += "Uang Anda: Rp." + textBox5->Text + "\n";
 		receipt += "Harga Awal: Rp. " + textBox2->Text + "\n";
-
+		int total = Int32::Parse(textBox4->Text); // Mengambil nilai total dari TextBox4
+		int kembalian = saldo - total; // Menghitung kembalian
+		if (kembalian < 0) {
+			MessageBox::Show("Gimana Mau Beli Motor, Kalo Duitnya Kurang .", "Balance Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			return;
+		}
 		receipt += "Metode Pembayaran: " + comboBox2->SelectedItem->ToString() + "\n";
 		receipt += "Total Diskon: Rp. " + textBox3->Text + "\n";
 		receipt += "Total Pembayaran: Rp. " + textBox4->Text + "\n";
-
 		receipt += "\n===========T E R I M A K A S I H============";
-
+		saldo -= total; // Mengurangi saldo setelah pembelian
 		richTextBox1->Text = receipt;
+		textBox5->Text = saldo.ToString();
+
 	}
 private: System::Void richTextBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	richTextBox1->Enabled = false;
@@ -681,7 +739,10 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	textBox1->Text = "";
 	textBox3->Text = "";
 	textBox4->Text = "";
+	textBox5->Text = "";
 	richTextBox1->Text = "";
+	richTextBox1->Enabled = true;
+	saldo = 50000000;
 
 }
 private:		   
@@ -698,6 +759,14 @@ private: System::Void textBox1_TextChanged(System::Object^ sender, System::Event
 
 private: System::Void SomeOtherMethod() {
 	SetTextBox1Text("New text value");
+}
+private: System::Void label12_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void textBox5_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void label13_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void textBox6_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
