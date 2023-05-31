@@ -78,7 +78,8 @@ namespace PenjualanMotor {
 
 	private: System::Windows::Forms::TextBox^ textBox5;
 	private: System::Windows::Forms::Label^ label13;
-	private: System::Windows::Forms::Label^ label12;
+
+
 
 
 
@@ -122,7 +123,6 @@ namespace PenjualanMotor {
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
 			this->label13 = (gcnew System::Windows::Forms::Label());
-			this->label12 = (gcnew System::Windows::Forms::Label());
 			this->panel1->SuspendLayout();
 			this->panel2->SuspendLayout();
 			this->SuspendLayout();
@@ -464,7 +464,6 @@ namespace PenjualanMotor {
 			// 
 			// textBox5
 			// 
-			this->textBox5->Enabled = false;
 			this->textBox5->Location = System::Drawing::Point(752, 132);
 			this->textBox5->Name = L"textBox5";
 			this->textBox5->Size = System::Drawing::Size(124, 20);
@@ -474,27 +473,15 @@ namespace PenjualanMotor {
 			// label13
 			// 
 			this->label13->AutoSize = true;
-			this->label13->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label13->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label13->ForeColor = System::Drawing::Color::White;
-			this->label13->Location = System::Drawing::Point(670, 130);
+			this->label13->Location = System::Drawing::Point(686, 127);
 			this->label13->Name = L"label13";
-			this->label13->Size = System::Drawing::Size(76, 20);
+			this->label13->Size = System::Drawing::Size(60, 25);
 			this->label13->TabIndex = 20;
-			this->label13->Text = L"Sisa Saldo";
+			this->label13->Text = L"Saldo";
 			this->label13->Click += gcnew System::EventHandler(this, &MyForm::label13_Click);
-			// 
-			// label12
-			// 
-			this->label12->AutoSize = true;
-			this->label12->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label12->ForeColor = System::Drawing::Color::White;
-			this->label12->Location = System::Drawing::Point(603, 92);
-			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(196, 22);
-			this->label12->TabIndex = 21;
-			this->label12->Text = L"Saldo Rp.50.000.000";
 			// 
 			// MyForm
 			// 
@@ -502,7 +489,6 @@ namespace PenjualanMotor {
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->ClientSize = System::Drawing::Size(960, 685);
-			this->Controls->Add(this->label12);
 			this->Controls->Add(this->label13);
 			this->Controls->Add(this->textBox5);
 			this->Controls->Add(this->button2);
@@ -644,7 +630,7 @@ public:
 	}
 
 private:
-	int saldo = 50000000; // Saldo awal diubah menjadi variabel global
+	int saldo = 0; // Saldo awal diubah menjadi variabel global
 
 	void HitungTotal() {
 		int harga = Int32::Parse(textBox2->Text);
@@ -655,9 +641,14 @@ private:
 
 		textBox3->Text = totalDiskon.ToString();
 		textBox4->Text = total.ToString();
-		textBox5->Text = saldo.ToString(); // Menampilkan saldo pada TextBox5
+		textBox5->Text = saldo.ToString(); 
 	}
 	private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^ e) {
+		if (textBox5->Text == "") {
+			MessageBox::Show("Isi Kolom Saldo Terlebih Dahulu.", "Incomplete Information", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			return;
+		}
+		saldo = Int32::Parse(textBox5->Text); 
 		HitungTotal();
 	}
 	private: System::Void textBox4_TextChanged(System::Object ^ sender, System::EventArgs ^ e) {
@@ -669,7 +660,7 @@ private:
 			Application::Exit();
 	}
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (textBox1->Text == "" || comboBox1->SelectedItem == nullptr || (radioButton1->Checked == false && radioButton2->Checked == false) || comboBox2->SelectedItem == nullptr) {
+		if (textBox1->Text == "" || comboBox1->SelectedItem == nullptr || (radioButton1->Checked == false && radioButton2->Checked == false) || comboBox2->SelectedItem == nullptr || textBox4->Text == "") {
 			MessageBox::Show("Isi Kolomnya Dong, Biar Programnya Jalan.", "Incomplete Information", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 			return;
 		}
