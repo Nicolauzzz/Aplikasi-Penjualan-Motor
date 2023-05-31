@@ -135,7 +135,7 @@ namespace PenjualanMotor {
 			this->label1->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 27.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::Color::White;
-			this->label1->Location = System::Drawing::Point(264, 22);
+			this->label1->Location = System::Drawing::Point(266, 24);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(380, 43);
 			this->label1->TabIndex = 0;
@@ -208,8 +208,8 @@ namespace PenjualanMotor {
 			// 
 			// panel1
 			// 
-			this->panel1->BackColor = System::Drawing::Color::Teal;
-			this->panel1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->panel1->BackColor = System::Drawing::Color::Transparent;
+			this->panel1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
 			this->panel1->Controls->Add(this->textBox2);
 			this->panel1->Controls->Add(this->radioButton2);
 			this->panel1->Controls->Add(this->radioButton1);
@@ -273,9 +273,9 @@ namespace PenjualanMotor {
 			// 
 			// panel2
 			// 
-			this->panel2->BackColor = System::Drawing::Color::Teal;
+			this->panel2->BackColor = System::Drawing::Color::Transparent;
 			this->panel2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
-			this->panel2->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->panel2->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
 			this->panel2->Controls->Add(this->textBox4);
 			this->panel2->Controls->Add(this->textBox3);
 			this->panel2->Controls->Add(this->label10);
@@ -373,11 +373,12 @@ namespace PenjualanMotor {
 			// 
 			// button1
 			// 
-			this->button1->BackColor = System::Drawing::Color::Teal;
+			this->button1->BackColor = System::Drawing::Color::White;
 			this->button1->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->button1->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->ForeColor = System::Drawing::Color::Transparent;
+			this->button1->ForeColor = System::Drawing::Color::DimGray;
 			this->button1->Location = System::Drawing::Point(284, 326);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 49);
@@ -390,11 +391,11 @@ namespace PenjualanMotor {
 			// 
 			this->button3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->button3->FlatAppearance->BorderColor = System::Drawing::Color::Teal;
+			this->button3->FlatAppearance->BorderColor = System::Drawing::Color::White;
 			this->button3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button3->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button3->ForeColor = System::Drawing::Color::Teal;
+			this->button3->ForeColor = System::Drawing::Color::White;
 			this->button3->Location = System::Drawing::Point(630, 578);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(246, 46);
@@ -405,23 +406,24 @@ namespace PenjualanMotor {
 			// 
 			// button4
 			// 
-			this->button4->BackColor = System::Drawing::Color::Teal;
+			this->button4->BackColor = System::Drawing::Color::White;
 			this->button4->FlatAppearance->BorderSize = 0;
 			this->button4->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button4->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button4->ForeColor = System::Drawing::Color::White;
-			this->button4->Location = System::Drawing::Point(108, 564);
+			this->button4->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)));
+			this->button4->Location = System::Drawing::Point(120, 578);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(159, 46);
 			this->button4->TabIndex = 14;
-			this->button4->Text = L"Confirm";
+			this->button4->Text = L"CONFIRM";
 			this->button4->UseVisualStyleBackColor = false;
 			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
 			// 
 			// richTextBox1
 			// 
-			this->richTextBox1->BackColor = System::Drawing::Color::Teal;
+			this->richTextBox1->BackColor = System::Drawing::Color::Gainsboro;
 			this->richTextBox1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->richTextBox1->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
@@ -448,13 +450,13 @@ namespace PenjualanMotor {
 			// 
 			// button2
 			// 
-			this->button2->BackColor = System::Drawing::Color::Teal;
+			this->button2->BackColor = System::Drawing::Color::White;
 			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->button2->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button2->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
-				static_cast<System::Int32>(static_cast<System::Byte>(255)));
-			this->button2->Location = System::Drawing::Point(316, 564);
+			this->button2->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)));
+			this->button2->Location = System::Drawing::Point(308, 578);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(157, 46);
 			this->button2->TabIndex = 17;
