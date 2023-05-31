@@ -526,11 +526,6 @@ namespace PenjualanMotor {
 	}
 	private: System::Void label10_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-	private: System::Void radioButton1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
-		if (radioButton1->Checked) {
-			textBox2->Text = sportPrice.ToString();
-		}
-	}
 	private: System::Void label9_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 
@@ -573,13 +568,11 @@ public:
 				sportPrice = 29000000;
 				maticPrice = 14000000;
 			}
-
-			if (radioButton1->Checked) {
-				textBox2->Text = sportPrice.ToString();
-			}
-			else if (radioButton2->Checked) {
-				textBox2->Text = maticPrice.ToString();
-			}
+		};
+	}
+	private: System::Void radioButton1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+		if (radioButton1->Checked) {
+			textBox2->Text = sportPrice.ToString();
 		}
 	}
 	private: System::Void radioButton2_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
@@ -621,35 +614,33 @@ public:
 					diskon = 7;
 				}
 			}
-
 			textBox3->Text = diskon.ToString();
-		}
+		};
 	}
 	private: System::Void textBox3_TextChanged(System::Object ^ sender, System::EventArgs ^ e) {
 		textBox3->Enabled = false;
 	}
+	private:
+		int saldo = 0; 
 
-private:
-	int saldo = 0; // Saldo awal diubah menjadi variabel global
+		void HitungTotal() {
+			int harga = Int32::Parse(textBox2->Text);
+			int diskon = Int32::Parse(textBox3->Text);
+			int totalDiskon = (diskon * harga) / 100;
+			int total = harga - totalDiskon;
+			int kembalian = saldo - total;
 
-	void HitungTotal() {
-		int harga = Int32::Parse(textBox2->Text);
-		int diskon = Int32::Parse(textBox3->Text);
-		int totalDiskon = (diskon * harga) / 100;
-		int total = harga - totalDiskon;
-		int kembalian = saldo - total;
-
-		textBox3->Text = totalDiskon.ToString();
-		textBox4->Text = total.ToString();
-		textBox5->Text = saldo.ToString(); 
+			textBox3->Text = totalDiskon.ToString();
+			textBox4->Text = total.ToString();
+			textBox5->Text = saldo.ToString(); 
 	}
 	private: System::Void button1_Click(System::Object ^ sender, System::EventArgs ^ e) {
 		if (textBox5->Text == "") {
-			MessageBox::Show("Isi Kolom Saldo Terlebih Dahulu.", "Incomplete Information", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			MessageBox::Show("Isi Saldo Dulu.", "Incomplete Information", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 			return;
 		}
 		saldo = Int32::Parse(textBox5->Text); 
-		HitungTotal();
+			HitungTotal();
 	}
 	private: System::Void textBox4_TextChanged(System::Object ^ sender, System::EventArgs ^ e) {
 		textBox4->Enabled = false;
@@ -664,7 +655,6 @@ private:
 			MessageBox::Show("Isi Kolomnya Dong, Biar Programnya Jalan.", "Incomplete Information", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 			return;
 		}
-
 		Form^ loadingForm = gcnew Form();
 		loadingForm->Text = "Loading...";
 		Label^ loadingLabel = gcnew Label();
@@ -702,10 +692,9 @@ private:
 		else if (radioButton2->Checked) {
 			receipt += "Tipe: Matic\n";
 		}
-		//receipt += "Uang Anda: Rp." + textBox5->Text + "\n";
 		receipt += "Harga Awal: Rp. " + textBox2->Text + "\n";
-		int total = Int32::Parse(textBox4->Text); // Mengambil nilai total dari TextBox4
-		int kembalian = saldo - total; // Menghitung kembalian
+		int total = Int32::Parse(textBox4->Text); 
+		int kembalian = saldo - total; 
 		if (kembalian < 0) {
 			MessageBox::Show("Gimana Mau Beli Motor, Kalo Duitnya Kurang .", "Balance Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 			return;
@@ -714,29 +703,27 @@ private:
 		receipt += "Total Diskon: Rp. " + textBox3->Text + "\n";
 		receipt += "Total Pembayaran: Rp. " + textBox4->Text + "\n";
 		receipt += "\n===========T E R I M A K A S I H============";
-		saldo -= total; // Mengurangi saldo setelah pembelian
+		saldo -= total;
 		richTextBox1->Text = receipt;
 		textBox5->Text = saldo.ToString();
-
 	}
-private: System::Void richTextBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	richTextBox1->Enabled = false;
-}
-private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-	comboBox1->SelectedIndex = -1;
-	radioButton1->Checked = false;
-	radioButton2->Checked = false;
-	textBox2->Text = "";
-	textBox1->Text = "";
-	textBox3->Text = "";
-	textBox4->Text = "";
-	textBox5->Text = "";
-	richTextBox1->Text = "";
-	richTextBox1->Enabled = true;
-	saldo = 50000000;
-
-}
-private:		   
+	private: System::Void richTextBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+		richTextBox1->Enabled = false;
+	}
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		comboBox1->SelectedIndex = -1;
+		radioButton1->Checked = false;
+		radioButton2->Checked = false;
+		textBox2->Text = "";
+		textBox1->Text = "";
+		textBox3->Text = "";
+		textBox4->Text = "";
+		textBox5->Text = "";
+		richTextBox1->Text = "";
+		richTextBox1->Enabled = true;
+		saldo = 50000000;
+	}
+	private:		   
 		   String^ GetTextBox1Text() {
 			   return textBox1->Text;
 		   }
@@ -744,20 +731,19 @@ private:
 		   void SetTextBox1Text(String^ newText) {
 			   textBox1->Text = newText;
 		   }
-private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	String^ inputText = GetTextBox1Text();
-}
-
-private: System::Void SomeOtherMethod() {
+	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+		String^ inputText = GetTextBox1Text();
+	}
+	private: System::Void SomeOtherMethod() {
 	SetTextBox1Text("New text value");
-}
-private: System::Void label12_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void textBox5_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void label13_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void textBox6_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-};
+	}
+	private: System::Void label12_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void textBox5_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void label13_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void textBox6_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	};
 }
