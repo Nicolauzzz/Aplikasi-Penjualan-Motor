@@ -356,9 +356,11 @@ namespace PenjualanMotor {
 			// textBox1
 			// 
 			this->textBox1->BackColor = System::Drawing::Color::White;
+			this->textBox1->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->textBox1->Location = System::Drawing::Point(176, 96);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(161, 20);
+			this->textBox1->Size = System::Drawing::Size(161, 22);
 			this->textBox1->TabIndex = 9;
 			this->textBox1->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox1_TextChanged);
 			// 
