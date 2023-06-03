@@ -135,7 +135,7 @@ namespace PenjualanMotor {
 			this->label1->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 27.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::Color::White;
-			this->label1->Location = System::Drawing::Point(266, 24);
+			this->label1->Location = System::Drawing::Point(300, 20);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(380, 43);
 			this->label1->TabIndex = 0;
@@ -149,7 +149,7 @@ namespace PenjualanMotor {
 			this->label2->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label2->ForeColor = System::Drawing::Color::White;
-			this->label2->Location = System::Drawing::Point(49, 94);
+			this->label2->Location = System::Drawing::Point(69, 94);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(101, 20);
 			this->label2->TabIndex = 1;
@@ -200,7 +200,7 @@ namespace PenjualanMotor {
 			this->label6->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label6->ForeColor = System::Drawing::Color::White;
-			this->label6->Location = System::Drawing::Point(31, 114);
+			this->label6->Location = System::Drawing::Point(64, 112);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(43, 20);
 			this->label6->TabIndex = 5;
@@ -225,7 +225,7 @@ namespace PenjualanMotor {
 			// 
 			// textBox2
 			// 
-			this->textBox2->Location = System::Drawing::Point(83, 114);
+			this->textBox2->Location = System::Drawing::Point(134, 114);
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->Size = System::Drawing::Size(169, 20);
 			this->textBox2->TabIndex = 9;
@@ -296,9 +296,9 @@ namespace PenjualanMotor {
 			// 
 			// textBox3
 			// 
-			this->textBox3->Location = System::Drawing::Point(88, 50);
+			this->textBox3->Location = System::Drawing::Point(123, 50);
 			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(135, 20);
+			this->textBox3->Size = System::Drawing::Size(153, 20);
 			this->textBox3->TabIndex = 12;
 			this->textBox3->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox3_TextChanged);
 			// 
@@ -321,7 +321,7 @@ namespace PenjualanMotor {
 			this->label9->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label9->ForeColor = System::Drawing::Color::White;
-			this->label9->Location = System::Drawing::Point(32, 50);
+			this->label9->Location = System::Drawing::Point(45, 50);
 			this->label9->Name = L"label9";
 			this->label9->Size = System::Drawing::Size(47, 20);
 			this->label9->TabIndex = 10;
@@ -346,7 +346,7 @@ namespace PenjualanMotor {
 			this->label7->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label7->ForeColor = System::Drawing::Color::White;
-			this->label7->Location = System::Drawing::Point(49, 342);
+			this->label7->Location = System::Drawing::Point(69, 342);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(86, 20);
 			this->label7->TabIndex = 8;
@@ -355,7 +355,7 @@ namespace PenjualanMotor {
 			// textBox1
 			// 
 			this->textBox1->BackColor = System::Drawing::Color::White;
-			this->textBox1->Location = System::Drawing::Point(156, 96);
+			this->textBox1->Location = System::Drawing::Point(176, 96);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(161, 20);
 			this->textBox1->TabIndex = 9;
@@ -365,7 +365,7 @@ namespace PenjualanMotor {
 			// 
 			this->comboBox2->FormattingEnabled = true;
 			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Tunai", L"Kredit" });
-			this->comboBox2->Location = System::Drawing::Point(142, 343);
+			this->comboBox2->Location = System::Drawing::Point(163, 344);
 			this->comboBox2->Name = L"comboBox2";
 			this->comboBox2->Size = System::Drawing::Size(121, 21);
 			this->comboBox2->TabIndex = 10;
@@ -378,8 +378,9 @@ namespace PenjualanMotor {
 			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->button1->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->ForeColor = System::Drawing::Color::DimGray;
-			this->button1->Location = System::Drawing::Point(284, 326);
+			this->button1->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)));
+			this->button1->Location = System::Drawing::Point(303, 326);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 49);
 			this->button1->TabIndex = 11;
@@ -466,7 +467,7 @@ namespace PenjualanMotor {
 			// 
 			// textBox5
 			// 
-			this->textBox5->Location = System::Drawing::Point(752, 132);
+			this->textBox5->Location = System::Drawing::Point(766, 133);
 			this->textBox5->Name = L"textBox5";
 			this->textBox5->Size = System::Drawing::Size(124, 20);
 			this->textBox5->TabIndex = 19;
@@ -478,7 +479,7 @@ namespace PenjualanMotor {
 			this->label13->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label13->ForeColor = System::Drawing::Color::White;
-			this->label13->Location = System::Drawing::Point(686, 127);
+			this->label13->Location = System::Drawing::Point(701, 130);
 			this->label13->Name = L"label13";
 			this->label13->Size = System::Drawing::Size(60, 25);
 			this->label13->TabIndex = 20;
@@ -680,7 +681,7 @@ public:
 
 		String^ receipt = "   A P L I K A S I  P E N J U A L A N  M O T O R  \n";
 		receipt += "========NICOLAUS EVAN WIDYATNA========\n";
-		receipt += "===========(21120122140140)============\n";
+		receipt += "============(21120122140140)============\n";
 
 		receipt += "\nStruk Pembelian Anda.\n";
 
