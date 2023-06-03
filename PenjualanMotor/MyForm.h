@@ -728,6 +728,7 @@ public:
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 		comboBox1->SelectedIndex = -1;
+		comboBox2->SelectedIndex = -1;
 		radioButton1->Checked = false;
 		radioButton2->Checked = false;
 		textBox2->Text = "";
@@ -737,7 +738,7 @@ public:
 		textBox5->Text = "";
 		richTextBox1->Text = "";
 		richTextBox1->Enabled = true;
-		saldo = 50000000;
+		saldo = 0;
 	}
 	private:		   
 		   String^ GetTextBox1Text() {
