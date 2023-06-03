@@ -3,6 +3,7 @@
 #include <string>
 #include <Windows.h>
 #include <msclr/marshal_cppstd.h>
+
 namespace PenjualanMotor {
 
 	using namespace System;
@@ -375,6 +376,7 @@ namespace PenjualanMotor {
 			// 
 			this->button1->BackColor = System::Drawing::Color::White;
 			this->button1->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->button1->FlatAppearance->BorderColor = System::Drawing::Color::White;
 			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->button1->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
