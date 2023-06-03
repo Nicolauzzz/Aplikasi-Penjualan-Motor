@@ -631,11 +631,13 @@ public:
 		int saldo = 0; 
 
 		void HitungTotal() {
-			int harga = Int32::Parse(textBox2->Text);
-			int diskon = Int32::Parse(textBox3->Text);
-			int totalDiskon = (diskon * harga) / 100;
-			int total = harga - totalDiskon;
-			int kembalian = saldo - total;
+			int harga, diskon, totalDiskon, total, kembalian;
+
+			harga = Int32::Parse(textBox2->Text);
+			diskon = Int32::Parse(textBox3->Text);
+			totalDiskon = (diskon * harga) / 100;
+			total = harga - totalDiskon;
+			kembalian = saldo - total;
 
 			textBox3->Text = totalDiskon.ToString();
 			textBox4->Text = total.ToString();
@@ -646,9 +648,16 @@ public:
 			MessageBox::Show("Isi Saldo Dulu.", "Incomplete Information", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 			return;
 		}
-		saldo = Int32::Parse(textBox5->Text); 
+		try {
+			saldo = Convert::ToInt32(textBox5->Text);
+		}
+		catch (FormatException^) {
+			MessageBox::Show("Saldo Harus Berupa Angka Yaa.", "Error", MessageBoxButtons::OK, (MessageBoxIcon)System::Windows::Forms::MessageBoxIcon::Error);
+			return;
+		}
 			HitungTotal();
 	}
+
 	private: System::Void textBox4_TextChanged(System::Object ^ sender, System::EventArgs ^ e) {
 		textBox4->Enabled = false;
 	}
