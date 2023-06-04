@@ -42,6 +42,7 @@ namespace PenjualanMotor {
 				delete components;
 			}
 		}
+	
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label3;
@@ -188,11 +189,11 @@ namespace PenjualanMotor {
 			this->label5->Font = (gcnew System::Drawing::Font(L"Arial Narrow", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label5->ForeColor = System::Drawing::Color::White;
-			this->label5->Location = System::Drawing::Point(50, 82);
+			this->label5->Location = System::Drawing::Point(51, 81);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(73, 20);
+			this->label5->Size = System::Drawing::Size(70, 20);
 			this->label5->TabIndex = 4;
-			this->label5->Text = L"Jenis Motor";
+			this->label5->Text = L"Tipe Motor";
 			this->label5->Click += gcnew System::EventHandler(this, &MyForm::label5_Click);
 			// 
 			// label6
